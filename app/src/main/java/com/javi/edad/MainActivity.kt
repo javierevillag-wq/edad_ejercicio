@@ -30,11 +30,22 @@ class MainActivity : AppCompatActivity() {
             if (edadInput.isNotEmpty()) {
                 edad.setText((edadInput.toInt() - 1).toString())
             }
+            if (edad.text.toString().toInt() > 18) {
+                texto.text = "Eres mayor de edad"
+            } else {
+                texto.text = "Eres menor de edad"
+            }
         }
         findViewById<Button>(R.id.button6).setOnClickListener {
             val edadInput = edad.text.toString()
-            if (edadInput.isNotEmpty()) {
+            if (edadInput.isNotEmpty())
+            {
                 edad.setText((edadInput.toInt() + 1).toString())
+            }
+            if (edad.text.toString().toInt() > 18) {
+                texto.text = "Eres mayor de edad"
+            } else {
+                texto.text = "Eres menor de edad"
             }
         }
 
