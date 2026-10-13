@@ -22,6 +22,16 @@ class MainActivity : AppCompatActivity() {
         val button7 = findViewById<Button>(R.id.button7)
         val button6 = findViewById<Button>(R.id.button6)
 
+        fun actualizarMensaje(edad: Int?, textoResultado: TextView ){
+            if (edad != null) {
+                if (edad >= 18) {
+                    textoResultado.text = "Eres mayor de edad"
+                } else {
+                    textoResultado.text = "Eres menor de edad"
+                }
+            }
+        }
+
         findViewById<Button>(R.id.button7).setOnClickListener {
             if (edad.text.toString().toInt() == 0) {
                 return@setOnClickListener
@@ -30,24 +40,16 @@ class MainActivity : AppCompatActivity() {
             if (edadInput.isNotEmpty()) {
                 edad.setText((edadInput.toInt() - 1).toString())
             }
-            if (edad.text.toString().toInt() > 18) {
-                texto.text = "Eres mayor de edad"
-            } else {
-                texto.text = "Eres menor de edad"
-            }
+            actualizarMensaje(edad.text.toString().toInt(), texto)
         }
         findViewById<Button>(R.id.button6).setOnClickListener {
             val edadInput = edad.text.toString()
-            if (edadInput.isNotEmpty())
-            {
+            if (edadInput.isNotEmpty()) {
                 edad.setText((edadInput.toInt() + 1).toString())
             }
-            if (edad.text.toString().toInt() > 18) {
-                texto.text = "Eres mayor de edad"
-            } else {
-                texto.text = "Eres menor de edad"
-            }
+            actualizarMensaje(edad.text.toString().toInt(), texto)
         }
+
 
         findViewById<Button>(R.id.boton).setOnClickListener {
             val edadInput = edad.text.toString()
@@ -58,7 +60,7 @@ class MainActivity : AppCompatActivity() {
                     texto.text = "Eres menor de edad"
                 }
             }
-            }
+        }
 
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
